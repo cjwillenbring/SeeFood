@@ -105,7 +105,7 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
 
 
 def load_model():
-    model = torchvision.models.resnet152(pretrained=True)
+    model = torchvision.models.resnet18(pretrained=True)
     num_ftrs = model.fc.in_features
     # Here the size of each output sample is set to 2.
     # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
