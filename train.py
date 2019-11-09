@@ -46,6 +46,7 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
     for epoch in range(num_epochs):
+        epoch_start = time.time()
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print('-' * 10)
         # Each epoch has a training and validation phase
@@ -92,6 +93,7 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
                 best_model_wts = copy.deepcopy(model.state_dict())
                 torch.save(model.state_dict(), 'model.pt')
 
+        print("Epoch length: {}".format(time.time() - epoch_start))
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
