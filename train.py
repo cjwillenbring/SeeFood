@@ -32,8 +32,11 @@ def load_datasets():
 
     data_dir = sys.argv[1]
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
-    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=64, shuffle=True, num_workers=8) for x in
-                   ['train', 'val']}
+    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x],
+                                                  batch_size=64,
+                                                  shuffle=True,
+                                                  num_workers=16,
+                                                  pin_memory=True) for x in ['train', 'val']}
     dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
     class_names = image_datasets['train'].classes
     return dataloaders, dataset_sizes, class_names
