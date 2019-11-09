@@ -49,6 +49,7 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
         print('-' * 10)
         # Each epoch has a training and validation phase
         for phase in ['train', 'val']:
+            log_output = True
             if phase == 'train':
                 model.train()  # Set model to training mode
             else:
@@ -65,6 +66,9 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
                 # track history if only in train
                 with torch.set_grad_enabled(phase == 'train'):
                     outputs = model(inputs)
+                    if log_output:
+                        print(outputs)
+                        log_output = False
                     _, preds = torch.max(outputs, 1)
                     loss = criterion(outputs, labels)
 
