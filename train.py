@@ -103,7 +103,7 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
 
 
 def load_model():
-    model = torchvision.models.vgg11(pretrained=True, num_classes=NUM_CLASSES)
+    model = torchvision.models.vgg11(pretrained=False, num_classes=NUM_CLASSES)
     model = model.to(device)
     print('DEVICE: ', device)
     return model
