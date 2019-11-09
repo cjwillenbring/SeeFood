@@ -1,5 +1,4 @@
 from __future__ import print_function, division
-from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 import torchvision
 # License: BSD
 # Author: Sasank Chilamkurthy
@@ -106,14 +105,12 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
 
 
 def load_model():
-    model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
-
-    # replace the classifier with a new one, that has
-    # num_classes which is user-defined
-    # get number of input features for the classifier
-    in_features = model.roi_heads.box_predictor.cls_score.in_features
-    # replace the pre-trained head with a new one
-    model.roi_heads.box_predictor = FastRCNNPredictor(in_features, NUM_CLASSES)
+    model = torchvision.models.resnet152(pretrained=True)
+    num_ftrs = model.fc.in_features
+    # Here the size of each output sample is set to 2.
+    # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
+    model.fc = nn.Linear(num_ftrs, NUM_CLASSES)
+    model = model.to(device)
     return model
 
 
