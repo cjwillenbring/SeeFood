@@ -68,7 +68,6 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
                 with torch.set_grad_enabled(phase == 'train'):
                     outputs = model(inputs)
                     _, preds = torch.max(outputs, 1)
-                    print(outputs)
                     loss = criterion(outputs, labels)
 
                     # backward + optimize only if in training phase
