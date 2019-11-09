@@ -34,7 +34,7 @@ def load_datasets():
 
     data_dir = sys.argv[1]
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
-    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=4, shuffle=True, num_workers=4) for x in
+    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=512, shuffle=True, num_workers=8) for x in
                    ['train', 'val']}
     dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
     class_names = image_datasets['train'].classes
@@ -61,12 +61,15 @@ def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epoc
             for inputs, labels in loaders[phase]:
                 inputs = inputs.to(device)
                 labels = labels.to(device)
+                print(labels)
+                print(inputs)
                 # zero the parameter gradients
                 optimizer.zero_grad()
                 # forward
                 # track history if only in train
                 with torch.set_grad_enabled(phase == 'train'):
                     outputs = model(inputs)
+                    print(outputs)
                     _, preds = torch.max(outputs, 1)
                     loss = criterion(outputs, labels)
 
