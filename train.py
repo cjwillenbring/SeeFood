@@ -114,7 +114,7 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs = 25):
 
 
 def load_model():
-    model_ft = torchvision.models.resnet18(pretrained=True)
+    model_ft = torchvision.models.resnext50_32x4d(pretrained=True)
     for param in model_ft.parameters():
         param.requires_grad = False
     num_ftrs = model_ft.fc.in_features
