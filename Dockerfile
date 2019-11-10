@@ -12,4 +12,6 @@ COPY . ./
 # Install production dependencies.
 RUN pip install Flask gunicorn torch torchvision
 
+RUN ls
+
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 1 app:app

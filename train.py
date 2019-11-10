@@ -24,14 +24,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def load_datasets():
     data_transforms = {
         'train': transforms.Compose([
-            transforms.Resize((299, 299)),
+            transforms.Resize((224, 224)),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
         ]),
         'val': transforms.Compose([
-            transforms.Resize((299, 299)),
+            transforms.Resize((224, 224)),
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
@@ -63,7 +63,7 @@ def convert_device(batch):
     return inputs.to(device), labels.to(device)
 
 
-def train(model, criterion, optimizer, scheduler, loader, size):
+def train(model, criterion, optimizer,loader, size):
     model.train()
     epoch_loss = 0.0
     epoch_accuracy = 0
@@ -78,7 +78,6 @@ def train(model, criterion, optimizer, scheduler, loader, size):
         epoch_loss += loss.item() * size
         epoch_accuracy += num_correct(preds, labels)
         optimizer.step()
-    scheduler.step()
     return epoch_loss / size, epoch_accuracy / size
 
 
@@ -103,6 +102,7 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs=50):
         start_time = time.time()
         train_loss, train_accuracy = train(model, criterion, optimizer, scheduler, loaders['train'], sizes['train'])
         valid_loss, valid_accuracy = evaluate(model, criterion, loaders['val'], sizes['val'])
+        scheduler.step()
 
         if valid_accuracy < best_accuracy:
             torch.save(model.load_state_dict(), 'model.pt')
@@ -117,17 +117,19 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs=50):
 
 
 def load_model():
-    model_ft = torchvision.models.inception_v3(pretrained=True)
+    model_ft = torchvision.models.densenet121(pretrained=True)
     for param in model_ft.parameters():
         param.requires_grad = False
-    num_features = model_ft.fc.in_features
+    num_features = model_ft.classifier.in_features
     # this kind of suggests that the models tried so far do not make good fixed feature extractors
     # Here the size of each output sample is set to 2.
     # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
 
-    model_ft.fc = torch.nn.Sequential(
-        torch.nn.Dropout(DROPOUT[0]),
-        torch.nn.Linear(num_features, NUM_CLASSES)
+    model_ft.classifier = torch.nn.Sequential(
+        nn.Linear(num_features, 512),
+        nn.ReLU(),
+        nn.Dropout(0.3),
+        nn.Linear(512, NUM_CLASSES)
     )
     model_ft = model_ft.to(device)
     print('DEVICE: ', device)
@@ -137,15 +139,15 @@ def load_model():
 def main():
     model = load_model()
     loaders, sizes, classes = load_datasets()
-    print(classes)
-    criterion = nn.CrossEntropyLoss()
+    l2 = torch.nn.MSELoss()
+    cross_entropy = nn.CrossEntropyLoss()
 
     # Observe that all parameters are being optimized
-    optimizer_ft = optim.SGD(model.parameters(), lr=0.008, momentum=0.9)
+    optimizer_ft = optim.Adam(model.parameters(), lr=0.01, amsgrad=True)
 
     # Decay LR by a factor of 0.1 every 7 epochs
-    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
-    run(model, criterion, optimizer_ft, exp_lr_scheduler, loaders, sizes, 25)
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=10, gamma=0.1)
+    run(model, lambda outputs, labels: l2(outputs, labels) + cross_entropy(outputs, labels), optimizer_ft, exp_lr_scheduler, loaders, sizes, 25)
 
 
 if __name__ == '__main__':
