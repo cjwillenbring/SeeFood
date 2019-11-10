@@ -14,7 +14,7 @@ NUM_CLASSES = 101
 
 DROPOUT = [0.5, 0.5]
 
-LINEAR_SIZE = 128
+LINEAR_SIZE = 256
 
 torch.random.seed = 1234
 
