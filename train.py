@@ -34,12 +34,12 @@ image_datasets = {
 dataloaders = {
     'train':
     torch.utils.data.DataLoader(image_datasets['train'],
-                                batch_size=32,
+                                batch_size=128,
                                 shuffle=True,
                                 num_workers=8),  # for Kaggle
     'val':
     torch.utils.data.DataLoader(image_datasets['val'],
-                                batch_size=32,
+                                batch_size=128,
                                 shuffle=False,
                                 num_workers=8)  # for Kaggle
 }
