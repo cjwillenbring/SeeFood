@@ -8,6 +8,10 @@ from torch import nn, optim
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
 
+
+eval_transform = transforms.Compose([transforms.Resize((224,224)), transforms.ToTensor(), normalize])
+
+
 data_transforms = {
     'train':
     transforms.Compose([
@@ -17,12 +21,7 @@ data_transforms = {
         transforms.ToTensor(),
         normalize
     ]),
-    'val':
-    transforms.Compose([
-        transforms.Resize((224,224)),
-        transforms.ToTensor(),
-        normalize
-    ]),
+    'val': eval_transform
 }
 
 image_datasets = {
@@ -109,4 +108,4 @@ def train_model(network, c, op, num_epochs=3):
 
 model = train_model(model, criterion, optimizer, 50)
 
-torch.save(model.load_state_dict(), 'model.pt')
+torch.save(model.state_dict(), 'model.pt')

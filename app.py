@@ -1,4 +1,4 @@
-from train import load_model
+from train import eval_transform
 import os
 import random
 from torchvision import transforms
@@ -34,7 +34,7 @@ def mock_response():
 
 def predict_base64(b64):
     img = image_from_base64(b64)
-    x = inference_transforms(img)
+    x = eval_transform(img)
     output = model(x)
     score, k = predict_one(output)
     return {'confidence': score, 'food': get_class_name(k)}
