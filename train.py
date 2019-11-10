@@ -46,32 +46,23 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print("device: ", device)
 
-model = models.resnet18(pretrained=True).to(device)
-
-for param in model.parameters():
-    param.requires_grad = False
-
+model = models.resnet18(pretrained=False).to(device)
 # train on more data. out. regularization? sure.
 
 model.fc = nn.Sequential(
-    nn.Dropout(0.8),
-    nn.Linear(512, 512),
+    nn.BatchNorm1d(2048),
+    nn.Linear(2048, 1024),
+    nn.LeakyReLU(),
+    nn.BatchNorm1d(1024),
+    nn.Linear(1024, 512),
+    nn.LeakyReLU(),
     nn.BatchNorm1d(512),
-    nn.LeakyReLU(inplace=True),
-    nn.Dropout(0.75),
-    nn.Linear(512, 256),
-    nn.BatchNorm1d(256),
-    nn.LeakyReLU(inplace=True),
-    nn.Dropout(0.7),
-    nn.Linear(256, 128),
-    nn.BatchNorm1d(128),
-    nn.LeakyReLU(inplace=True),
-    nn.Linear(128, 101)
+    nn.Linear(512, 101)
 ).to(device)
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-3, lr=0.001)
+optimizer = optim.SGD(model.parameters(), weight_decay=1e-5, lr=0.001)
 
 
 def train_model(network, c, op, num_epochs=3):
