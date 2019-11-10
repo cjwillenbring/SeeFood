@@ -45,7 +45,8 @@ def load_datasets():
 
 
 def calculate_accuracy(predictions, labels):
-    return (predictions == labels.data).sum().float() / predictions.size()
+    print(predictions.shape)
+    return (predictions == labels.data).sum().float() / predictions.size(0)
 
 
 def convert_device(batch):
