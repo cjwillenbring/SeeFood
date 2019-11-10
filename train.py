@@ -67,7 +67,7 @@ model.fc = nn.Sequential(
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-4)
+optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-4, lr=0.001)
 
 
 def train_model(network, c, op, num_epochs=3):
