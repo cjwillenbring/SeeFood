@@ -32,13 +32,11 @@ image_datasets = {
 }
 
 dataloaders = {
-    'train':
-    torch.utils.data.DataLoader(image_datasets['train'],
+    'train': torch.utils.data.DataLoader(image_datasets['train'],
                                 batch_size=128,
                                 shuffle=True,
                                 num_workers=8),  # for Kaggle
-    'val':
-    torch.utils.data.DataLoader(image_datasets['val'],
+    'val': torch.utils.data.DataLoader(image_datasets['val'],
                                 batch_size=128,
                                 shuffle=False,
                                 num_workers=8)  # for Kaggle
@@ -54,10 +52,13 @@ for param in model.parameters():
     param.requires_grad = False
 
 model.fc = nn.Sequential(
-    nn.Linear(2048, 128),
-    nn.BatchNorm1d(128),
-    nn.ReLU(inplace=True),
-    nn.Linear(128, 101)
+    nn.Linear(512, 512),
+    nn.BatchNorm1d(512),
+    nn.LeakyReLU(inplace=True),
+    nn.Linear(512, 256),
+    nn.BatchNorm1d(256),
+    nn.LeakyReLU(inplace=True),
+    nn.Linear(256, 101)
 ).to(device)
 
 
