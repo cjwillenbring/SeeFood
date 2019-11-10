@@ -14,6 +14,8 @@ NUM_CLASSES = 101
 
 DROPOUT = [0.5, 0.5]
 
+LINEAR_SIZE = 128
+
 torch.random.seed = 1234
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -122,11 +124,12 @@ def load_model():
     num_features = model_ft.fc.in_features
     # Here the size of each output sample is set to 2.
     # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
+
     model_ft.fc = torch.nn.Sequential(
         torch.nn.Dropout(DROPOUT[0]),
-        torch.nn.Linear(num_features, 512),
+        torch.nn.Linear(num_features, LINEAR_SIZE),
         torch.nn.Dropout(DROPOUT[1]),
-        torch.nn.Linear(512, NUM_CLASSES)
+        torch.nn.Linear(LINEAR_SIZE, NUM_CLASSES)
     )
     model_ft = model_ft.to(device)
     print('DEVICE: ', device)
