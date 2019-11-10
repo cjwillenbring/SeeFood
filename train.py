@@ -13,6 +13,8 @@ import copy
 
 NUM_CLASSES = 101
 
+DROPOUT = [0.5, 0.5]
+
 torch.random.seed = 1234
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -111,6 +113,7 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs = 25):
         print(f'\t Val. Loss: {valid_loss:.3f} |  Val. Acc: {valid_accuracy * 100:.2f}%')
 
     # for every epoch we want to train the model and evaluate it
+    # manual error analysis
 
 
 def load_model():
@@ -120,7 +123,12 @@ def load_model():
     num_ftrs = model_ft.fc.in_features
     # Here the size of each output sample is set to 2.
     # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
-    model_ft.fc = nn.Linear(num_ftrs, NUM_CLASSES)
+    model_ft.fc = torch.nn.Sequential(
+        torch.nn.Dropout(DROPOUT[0]),
+        torch.nn.Linear(num_ftrs, 512),
+        torch.nn.Dropout(DROPOUT[1]),
+        torch.nn.Linear(512, NUM_CLASSES)
+    )
     model_ft = model_ft.to(device)
     print('DEVICE: ', device)
     return model_ft
@@ -129,6 +137,7 @@ def load_model():
 def main():
     model = load_model()
     loaders, sizes, classes = load_datasets()
+    print(classes)
     criterion = nn.CrossEntropyLoss()
 
     # Observe that all parameters are being optimized
