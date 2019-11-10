@@ -42,7 +42,7 @@ def predict_base64(b64):
 
 @app.route('/predictions', methods=['POST'])
 def hello_world():
-    if type(request.get_json()) != str:
+    if type(request.get_json()['base64']) != str:
         return {'code': 403, 'message': 'Invalid request body. Request body must be a base64 encoded image.'}
     return mock_response()
 
