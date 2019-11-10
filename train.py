@@ -48,7 +48,8 @@ def calculate_accuracy(predictions, labels):
     return (predictions == labels.data).sum().float() / predictions.size()
 
 
-def convert(inputs, labels):
+def convert_device(batch):
+    inputs, labels = batch
     return inputs.to(device), labels.to(device)
 
 
@@ -57,7 +58,7 @@ def train(model, criterion, optimizer, scheduler, loader, size):
     epoch_loss = 0.0
     epoch_accuracy = 0
     print('train size:', size)
-    for inputs, labels in map(convert, loader):
+    for inputs, labels in map(convert_device, loader):
         optimizer.zero_grad()
         outputs = model(inputs)
         loss = criterion(outputs, labels)
@@ -77,7 +78,7 @@ def evaluate(model, criterion, loader, size):
     epoch_accuracy = 0.0
     print('eval size: ', size)
     with torch.no_grad():
-        for inputs, labels in map(convert, loader):
+        for inputs, labels in map(convert_device, loader):
             outputs = model(inputs)
             loss = criterion(outputs, labels)
             _, preds = torch.max(outputs, 1)
