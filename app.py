@@ -9,9 +9,9 @@ import base64
 from output import predict_one
 from config import get_class_name, random_class
 
-model = load_model()
+# model = load_model()
 
-model.load_state_dict()
+# model.load_state_dict()
 
 app = Flask(__name__)
 

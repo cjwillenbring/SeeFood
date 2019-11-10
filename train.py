@@ -24,14 +24,18 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def load_datasets():
     data_transforms = {
         'train': transforms.Compose([
-            transforms.Resize((224, 224)),
+            transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+            transforms.RandomRotation(degrees=15),
+            transforms.ColorJitter(),
             transforms.RandomHorizontalFlip(),
+            transforms.CenterCrop(size=224),  # Image net standards
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
         ]),
         'val': transforms.Compose([
-            transforms.Resize((224, 224)),
+            transforms.Resize(size=256),
+            transforms.CenterCrop(size=224),
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
@@ -77,11 +81,11 @@ def train(model, criterion, optimizer, loader, size):
         l2, cross_entropy = criterion
         loss = cross_entropy(outputs, labels)
         loss.backward()
+        optimizer.step()
         _, preds = torch.max(outputs, 1)
         # number of examples in batch, but why>
         epoch_loss += loss.item() * size
         epoch_accuracy += num_correct(preds, labels)
-        optimizer.step()
     return epoch_loss / size, epoch_accuracy / size
 
 
@@ -122,20 +126,20 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs=50):
 
 
 def load_model():
-    model_ft = torchvision.models.densenet121(pretrained=True)
+    model_ft = torchvision.models.vgg16(pretrained=True)
     for param in model_ft.parameters():
         param.requires_grad = False
-    num_features = model_ft.classifier.in_features
+    num_features = model_ft.classifier[6].in_features
     # this kind of suggests that the models tried so far do not make good fixed feature extractors
     # Here the size of each output sample is set to 2.
     # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
 
-    model_ft.classifier = torch.nn.Sequential(
-        nn.Linear(num_features, 512),
+    model_ft.classifier[6] = nn.Sequential(
+        nn.Linear(num_features, 256),
         nn.ReLU(),
-        nn.Dropout(0.3),
-        nn.Linear(512, NUM_CLASSES)
-    )
+        nn.Dropout(0.4),
+        nn.Linear(256, NUM_CLASSES),
+        nn.LogSoftmax(dim=1))
     model_ft = model_ft.to(device)
     print('DEVICE: ', device)
     return model_ft
@@ -145,7 +149,7 @@ def main():
     model = load_model()
     loaders, sizes, classes = load_datasets()
     l2 = torch.nn.MSELoss()
-    cross_entropy = nn.CrossEntropyLoss()
+    cross_entropy = nn.NLLLoss()
 
     # Observe that all parameters are being optimized
     optimizer_ft = optim.Adam(model.classifier.parameters(), lr=0.01, amsgrad=True)
