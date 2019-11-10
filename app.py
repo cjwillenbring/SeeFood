@@ -1,7 +1,9 @@
 from train import eval_transform
 import os
+from torch import nn
+import torch
 import random
-from torchvision import transforms
+from torchvision import transforms, models
 from flask import Flask, request
 from PIL import Image
 from io import BytesIO
@@ -9,18 +11,25 @@ import base64
 from output import predict_one
 from config import get_class_name, random_class
 
-# model = load_model()
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# model.load_state_dict()
+model = models.resnet50(pretrained=True).to(device)
+
+for param in model.parameters():
+    param.requires_grad = False
+
+model.fc = nn.Sequential(
+    nn.Dropout(0.5),
+    nn.Linear(2048, 128),
+    nn.BatchNorm1d(128),
+    nn.ReLU(inplace=True),
+    nn.Dropout(0.4),
+    nn.Linear(128, 101)
+).to(device)
+
+model.load_state_dict('model.pt')
 
 app = Flask(__name__)
-
-
-inference_transforms = transforms.Compose([
-    transforms.Resize(224),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
 
 
 def image_from_base64(b64):
@@ -44,7 +53,7 @@ def predict_base64(b64):
 def hello_world():
     if type(request.get_json()['base64']) != str:
         return {'code': 403, 'message': 'Invalid request body. Request body must be a base64 encoded image.'}
-    return mock_response()
+    return predict_base64(request.get_json(['base64']))
 
 
 if __name__ == "__main__":

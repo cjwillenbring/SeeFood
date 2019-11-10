@@ -68,6 +68,7 @@ optimizer = optim.Adam(model.fc.parameters(), weight_decay=1e-5)
 
 
 def train_model(network, c, op, num_epochs=3):
+    best_acc = 0.0
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
         print('-' * 10)
@@ -99,6 +100,8 @@ def train_model(network, c, op, num_epochs=3):
 
             epoch_loss = running_loss / len(image_datasets[phase])
             epoch_acc = running_corrects.double() / len(image_datasets[phase])
+            if epoch_acc > best_acc and phase == 'val':
+                torch.save(model.state_dict(), 'model.pt')
 
             print('{} loss: {:.4f}, acc: {:.4f}'.format(phase,
                                                         epoch_loss,
