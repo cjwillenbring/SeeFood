@@ -50,14 +50,10 @@ model = models.resnet18(pretrained=False).to(device)
 # train on more data. out. regularization? sure.
 
 model.fc = nn.Sequential(
-    nn.BatchNorm1d(2048),
-    nn.Linear(2048, 1024),
-    nn.LeakyReLU(),
-    nn.BatchNorm1d(1024),
-    nn.Linear(1024, 512),
-    nn.LeakyReLU(),
     nn.BatchNorm1d(512),
-    nn.Linear(512, 101)
+    nn.Linear(512, 256),
+    nn.LeakyReLU(),
+    nn.Linear(256, 101)
 ).to(device)
 
 
