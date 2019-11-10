@@ -13,7 +13,7 @@ import copy
 
 NUM_CLASSES = 101
 
-DROPOUT = [0.5, 0.5]
+DROPOUT = [0.8, 0.5]
 
 torch.random.seed = 1234
 
@@ -41,7 +41,7 @@ def load_datasets():
     data_dir = sys.argv[1]
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}
     dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x],
-                                                  batch_size=64,
+                                                  batch_size=128,
                                                   shuffle=True,
                                                   num_workers=16,
                                                   pin_memory=True) for x in ['train', 'val']}
@@ -97,7 +97,7 @@ def evaluate(model, criterion, loader, size):
     return epoch_loss / size, epoch_accuracy / size
 
 
-def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs = 25):
+def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs=50):
     best_accuracy = 0.0
     for epoch in range(n_epochs):
         start_time = time.time()
@@ -141,7 +141,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     # Observe that all parameters are being optimized
-    optimizer_ft = optim.Adam(model.parameters(), lr=0.001)
+    optimizer_ft = optim.Adam(model.parameters(), lr=0.008)
 
     # Decay LR by a factor of 0.1 every 7 epochs
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
