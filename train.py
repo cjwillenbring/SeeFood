@@ -71,7 +71,8 @@ def train(model, criterion, optimizer, loader, size):
     for inputs, labels in map(convert_device, loader):
         optimizer.zero_grad()
         outputs = model(inputs)
-        loss = criterion(outputs, labels)
+        l2, cross_entropy = criterion
+        loss = l2(outputs, labels) + cross_entropy(outputs, labels)
         loss.backward()
         _, preds = torch.max(outputs, 1)
         # number of examples in batch, but why>
@@ -89,7 +90,8 @@ def evaluate(model, criterion, loader, size):
     with torch.no_grad():
         for inputs, labels in map(convert_device, loader):
             outputs = model(inputs)
-            loss = criterion(outputs, labels)
+            l2, cross_entropy = criterion
+            loss = l2(outputs, labels) + cross_entropy(outputs, labels)
             _, preds = torch.max(outputs, 1)
             epoch_loss += loss.item() * size
             epoch_accuracy += num_correct(preds, labels)
@@ -144,10 +146,11 @@ def main():
 
     # Observe that all parameters are being optimized
     optimizer_ft = optim.Adam(model.parameters(), lr=0.01, amsgrad=True)
+    criterion = (l2, cross_entropy)
 
     # Decay LR by a factor of 0.1 every 7 epochs
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=10, gamma=0.1)
-    run(model, lambda outputs, labels: l2(outputs, labels) + cross_entropy(outputs, labels), optimizer_ft, exp_lr_scheduler, loaders, sizes, 25)
+    run(model, criterion, optimizer_ft, exp_lr_scheduler, loaders, sizes, 25)
 
 
 if __name__ == '__main__':
