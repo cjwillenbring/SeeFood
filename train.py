@@ -54,20 +54,24 @@ for param in model.parameters():
 # train on more data. out. regularization? sure.
 
 model.fc = nn.Sequential(
-    nn.Dropout(0.7),
+    nn.Dropout(0.8),
     nn.Linear(512, 512),
     nn.BatchNorm1d(512),
     nn.LeakyReLU(inplace=True),
-    nn.Dropout(0.6),
+    nn.Dropout(0.75),
     nn.Linear(512, 256),
     nn.BatchNorm1d(256),
     nn.LeakyReLU(inplace=True),
-    nn.Linear(256, 101)
+    nn.Dropout(0.7),
+    nn.Linear(256, 128),
+    nn.BatchNorm1d(256),
+    nn.LeakyReLU(inplace=True),
+    nn.Linear(128, 101)
 ).to(device)
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-4, lr=0.002)
+optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-3, lr=0.001)
 
 
 def train_model(network, c, op, num_epochs=3):
