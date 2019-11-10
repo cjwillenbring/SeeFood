@@ -51,10 +51,14 @@ model = models.resnet18(pretrained=True).to(device)
 for param in model.parameters():
     param.requires_grad = False
 
+# train on more data. out. regularization? sure.
+
 model.fc = nn.Sequential(
+    nn.Dropout(0.7),
     nn.Linear(512, 512),
     nn.BatchNorm1d(512),
     nn.LeakyReLU(inplace=True),
+    nn.Dropout(0.6),
     nn.Linear(512, 256),
     nn.BatchNorm1d(256),
     nn.LeakyReLU(inplace=True),
@@ -63,7 +67,7 @@ model.fc = nn.Sequential(
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.fc.parameters(), weight_decay=1e-5)
+optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-4)
 
 
 def train_model(network, c, op, num_epochs=3):
