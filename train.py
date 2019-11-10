@@ -88,8 +88,6 @@ def evaluate(model, criterion, loader, size):
     print('eval size: ', size)
     with torch.no_grad():
         for inputs, labels in map(convert_device, loader):
-            if not epoch_accuracy:
-                print(labels.keys())
             outputs = model(inputs)
             loss = criterion(outputs, labels)
             _, preds = torch.max(outputs, 1)
