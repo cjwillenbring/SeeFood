@@ -67,7 +67,7 @@ model.fc = nn.Sequential(
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-4, lr=0.001)
+optimizer = optim.SGD(model.fc.parameters(), weight_decay=1e-4, lr=0.002)
 
 
 def train_model(network, c, op, num_epochs=3):
@@ -112,6 +112,6 @@ def train_model(network, c, op, num_epochs=3):
     return network
 
 
-model = train_model(model, criterion, optimizer, 50)
+model = train_model(model, criterion, optimizer, 500)
 
 torch.save(model.state_dict(), 'model.pt')
