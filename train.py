@@ -72,7 +72,7 @@ def train(model, criterion, optimizer, loader, size):
         optimizer.zero_grad()
         outputs = model(inputs)
         l2, cross_entropy = criterion
-        loss = l2(outputs, labels) + cross_entropy(outputs, labels)
+        loss = cross_entropy(outputs, labels)
         loss.backward()
         _, preds = torch.max(outputs, 1)
         # number of examples in batch, but why>
