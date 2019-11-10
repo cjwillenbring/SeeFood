@@ -13,6 +13,8 @@ import copy
 
 NUM_CLASSES = 101
 
+torch.random.seed = 1234
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -42,71 +44,64 @@ def load_datasets():
     return dataloaders, dataset_sizes, class_names
 
 
-def train_model(model, criterion, optimizer, scheduler, loaders, sizes, num_epochs=25):
-    since = time.time()
-    best_model_wts = copy.deepcopy(model.state_dict())
-    best_acc = 0.0
-    for epoch in range(num_epochs):
-        epoch_start = time.time()
-        print('Epoch {}/{}'.format(epoch, num_epochs - 1))
-        print('-' * 10)
-        # Each epoch has a training and validation phase
-        for phase in ['train', 'val']:
-            log_output = True
-            if phase == 'train':
-                model.train()  # Set model to training mode
-            else:
-                model.eval()   # Set model to evaluate mode
-            running_loss = 0.0
-            running_corrects = 0
-            # Iterate over data.
-            for inputs, labels in loaders[phase]:
-                inputs = inputs.to(device)
-                labels = labels.to(device)
-                # zero the parameter gradients
-                optimizer.zero_grad()
-                # forward
-                # track history if only in train
-                with torch.set_grad_enabled(phase == 'train'):
-                    outputs = model(inputs)
-                    if log_output:
-                        print(outputs)
-                        log_output = False
-                    _, preds = torch.max(outputs, 1)
-                    loss = criterion(outputs, labels)
+def calculate_accuracy(predictions, labels):
+    return (predictions == labels.data).sum().float() / predictions.size()
 
-                    # backward + optimize only if in training phase
-                    if phase == 'train':
-                        loss.backward()
-                        optimizer.step()
 
-                # statistics
-                running_loss += loss.item() * inputs.size(0)
-                running_corrects += torch.sum(preds == labels.data)
-            if phase == 'train':
-                scheduler.step()
+def convert(inputs, labels):
+    return inputs.to(device), labels.to(device)
 
-            epoch_loss = running_loss / sizes[phase]
-            epoch_acc = running_corrects.double() / sizes[phase]
 
-            print('{} Loss: {:.4f} Acc: {:.4f}'.format(
-                phase, epoch_loss, epoch_acc))
+def train(model, criterion, optimizer, scheduler, loader, size):
+    model.train()
+    epoch_loss = 0.0
+    epoch_accuracy = 0
+    print('train size:', size)
+    for inputs, labels in map(convert, loader):
+        optimizer.zero_grad()
+        outputs = model(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        _, preds = torch.max(outputs, 1)
+        # number of examples in batch, but why>
+        epoch_loss += loss.item()
+        epoch_accuracy += calculate_accuracy(preds, labels)
+        optimizer.step()
+    scheduler.step()
+    return epoch_loss / size, epoch_accuracy / size
 
-            # deep copy the model
-            if phase == 'val' and epoch_acc > best_acc:
-                best_acc = epoch_acc
-                best_model_wts = copy.deepcopy(model.state_dict())
-                torch.save(model.state_dict(), 'model.pt')
 
-        print("Epoch length: {}".format(time.time() - epoch_start))
-    time_elapsed = time.time() - since
-    print('Training complete in {:.0f}m {:.0f}s'.format(
-        time_elapsed // 60, time_elapsed % 60))
-    print('Best val Acc: {:4f}'.format(best_acc))
+def evaluate(model, criterion, loader, size):
+    model.eval()
+    epoch_loss = 0.0
+    epoch_accuracy = 0.0
+    print('eval size: ', size)
+    with torch.no_grad():
+        for inputs, labels in map(convert, loader):
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            _, preds = torch.max(outputs, 1)
+            epoch_loss += loss.item()
+            epoch_accuracy += calculate_accuracy(preds, labels)
+    return epoch_loss / size, epoch_accuracy / size
 
-    # load best model weights
-    model.load_state_dict(best_model_wts)
-    return model
+
+def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs = 25):
+    best_accuracy = 0.0
+    for epoch in range(n_epochs):
+        start_time = time.time()
+        train_loss, train_accuracy = train(model, criterion, optimizer, scheduler, loaders['train'], sizes['train'])
+        valid_loss, valid_accuracy = evaluate(model, criterion, loaders['val'], sizes['val'])
+
+        if valid_accuracy < best_accuracy:
+            torch.save(model.load_state_dict(), 'model.pt')
+
+        epoch_time = time.time() - start_time
+        print(f'Epoch: {epoch + 1:02} | Epoch Time: {epoch_time}s')
+        print(f'\tTrain Loss: {train_loss:.3f} | Train Acc: {train_accuracy * 100:.2f}%')
+        print(f'\t Val. Loss: {valid_loss:.3f} |  Val. Acc: {valid_accuracy * 100:.2f}%')
+
+    # for every epoch we want to train the model and evaluate it
 
 
 def load_model():
@@ -126,8 +121,7 @@ def main():
 
     # Decay LR by a factor of 0.1 every 7 epochs
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
-    model = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, loaders, sizes, 25)
-    model.save('model.pt')
+    run(model, criterion, optimizer_ft, exp_lr_scheduler, loaders, sizes, 25)
 
 
 if __name__ == '__main__':
