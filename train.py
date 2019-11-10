@@ -63,6 +63,9 @@ def convert_device(batch):
     return inputs.to(device), labels.to(device)
 
 
+# what the fuck is going on with the val set!!!!!!!!!!!!!
+
+
 def train(model, criterion, optimizer, loader, size):
     model.train()
     epoch_loss = 0.0
@@ -145,7 +148,7 @@ def main():
     cross_entropy = nn.CrossEntropyLoss()
 
     # Observe that all parameters are being optimized
-    optimizer_ft = optim.Adam(model.parameters(), lr=0.01, amsgrad=True)
+    optimizer_ft = optim.Adam(model.classifier.parameters(), lr=0.01, amsgrad=True)
     criterion = (l2, cross_entropy)
 
     # Decay LR by a factor of 0.1 every 7 epochs
