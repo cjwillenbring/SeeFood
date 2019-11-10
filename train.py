@@ -100,6 +100,9 @@ def evaluate(model, criterion, loader, size):
             l2, cross_entropy = criterion
             loss = cross_entropy(outputs, labels)
             _, preds = torch.max(outputs, 1)
+            if not epoch_loss:
+                print(outputs)
+                print(preds)
             epoch_loss += loss.item() * size
             epoch_accuracy += num_correct(preds, labels)
     return epoch_loss / size, epoch_accuracy / size
