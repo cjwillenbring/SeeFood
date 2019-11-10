@@ -63,7 +63,7 @@ def convert_device(batch):
     return inputs.to(device), labels.to(device)
 
 
-def train(model, criterion, optimizer,loader, size):
+def train(model, criterion, optimizer, loader, size):
     model.train()
     epoch_loss = 0.0
     epoch_accuracy = 0
@@ -100,7 +100,7 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs=50):
     best_accuracy = 0.0
     for epoch in range(n_epochs):
         start_time = time.time()
-        train_loss, train_accuracy = train(model, criterion, optimizer, scheduler, loaders['train'], sizes['train'])
+        train_loss, train_accuracy = train(model, criterion, optimizer, loaders['train'], sizes['train'])
         valid_loss, valid_accuracy = evaluate(model, criterion, loaders['val'], sizes['val'])
         scheduler.step()
 
