@@ -9,11 +9,10 @@ from torchvision import datasets, transforms
 import time
 import sys
 import os
-import copy
 
 NUM_CLASSES = 101
 
-DROPOUT = [0.8, 0.5]
+DROPOUT = [0.5, 0.5]
 
 torch.random.seed = 1234
 
@@ -89,6 +88,8 @@ def evaluate(model, criterion, loader, size):
     print('eval size: ', size)
     with torch.no_grad():
         for inputs, labels in map(convert_device, loader):
+            if not epoch_accuracy:
+                print(labels.keys())
             outputs = model(inputs)
             loss = criterion(outputs, labels)
             _, preds = torch.max(outputs, 1)
@@ -117,15 +118,15 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs=50):
 
 
 def load_model():
-    model_ft = torchvision.models.resnext50_32x4d(pretrained=True)
+    model_ft = torchvision.models.resnet152(pretrained=True)
     for param in model_ft.parameters():
         param.requires_grad = False
-    num_ftrs = model_ft.fc.in_features
+    num_features = model_ft.fc.in_features
     # Here the size of each output sample is set to 2.
     # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
     model_ft.fc = torch.nn.Sequential(
         torch.nn.Dropout(DROPOUT[0]),
-        torch.nn.Linear(num_ftrs, 512),
+        torch.nn.Linear(num_features, 512),
         torch.nn.Dropout(DROPOUT[1]),
         torch.nn.Linear(512, NUM_CLASSES)
     )
