@@ -1,5 +1,6 @@
 from torchvision import transforms, datasets, models
 import sys
+import os
 import torch
 from torch import nn, optim
 
@@ -16,7 +17,7 @@ data_transforms = {
         transforms.ToTensor(),
         normalize
     ]),
-    'validation':
+    'val':
     transforms.Compose([
         transforms.Resize((224,224)),
         transforms.ToTensor(),
@@ -26,9 +27,9 @@ data_transforms = {
 
 image_datasets = {
     'train':
-    datasets.ImageFolder(sys.argv[1] + 'train', data_transforms['train']),
-    'validation':
-    datasets.ImageFolder(sys.argv[1] + 'validation', data_transforms['validation'])
+    datasets.ImageFolder(os.path.join(sys.argv[1], 'train'), data_transforms['train']),
+    'val':
+    datasets.ImageFolder(os.path.join(sys.argv[1], 'val'), data_transforms['val'])
 }
 
 dataloaders = {
@@ -37,8 +38,8 @@ dataloaders = {
                                 batch_size=32,
                                 shuffle=True,
                                 num_workers=0),  # for Kaggle
-    'validation':
-    torch.utils.data.DataLoader(image_datasets['validation'],
+    'val':
+    torch.utils.data.DataLoader(image_datasets['val'],
                                 batch_size=32,
                                 shuffle=False,
                                 num_workers=0)  # for Kaggle
@@ -66,7 +67,7 @@ def train_model(network, c, op, num_epochs=3):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
         print('-' * 10)
 
-        for phase in ['train', 'validation']:
+        for phase in ['train', 'val']:
             if phase == 'train':
                 network.train()
             else:
