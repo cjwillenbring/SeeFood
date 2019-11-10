@@ -91,7 +91,7 @@ def evaluate(model, criterion, loader, size):
         for inputs, labels in map(convert_device, loader):
             outputs = model(inputs)
             l2, cross_entropy = criterion
-            loss = l2(outputs, 0) + cross_entropy(outputs, labels)
+            loss = cross_entropy(outputs, labels)
             _, preds = torch.max(outputs, 1)
             epoch_loss += loss.item() * size
             epoch_accuracy += num_correct(preds, labels)
