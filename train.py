@@ -64,7 +64,7 @@ model.fc = nn.Sequential(
     nn.LeakyReLU(inplace=True),
     nn.Dropout(0.7),
     nn.Linear(256, 128),
-    nn.BatchNorm1d(256),
+    nn.BatchNorm1d(128),
     nn.LeakyReLU(inplace=True),
     nn.Linear(128, 101)
 ).to(device)
