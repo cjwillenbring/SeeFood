@@ -37,15 +37,17 @@ dataloaders = {
     torch.utils.data.DataLoader(image_datasets['train'],
                                 batch_size=32,
                                 shuffle=True,
-                                num_workers=0),  # for Kaggle
+                                num_workers=8),  # for Kaggle
     'val':
     torch.utils.data.DataLoader(image_datasets['val'],
                                 batch_size=32,
                                 shuffle=False,
-                                num_workers=0)  # for Kaggle
+                                num_workers=8)  # for Kaggle
 }
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+print("device: ", device)
 
 model = models.resnet50(pretrained=True).to(device)
 
@@ -53,13 +55,16 @@ for param in model.parameters():
     param.requires_grad = False
 
 model.fc = nn.Sequential(
+    nn.Dropout(0.5),
     nn.Linear(2048, 128),
     nn.ReLU(inplace=True),
-    nn.Linear(128, 101)).to(device)
+    nn.Dropout(0.4),
+    nn.Linear(128, 101)
+).to(device)
 
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.fc.parameters())
+optimizer = optim.Adam(model.fc.parameters(), weight_decay=1e-5)
 
 
 def train_model(network, c, op, num_epochs=3):
