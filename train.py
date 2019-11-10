@@ -114,10 +114,16 @@ def run(model, criterion, optimizer, scheduler, loaders, sizes, n_epochs = 25):
 
 
 def load_model():
-    model = torchvision.models.resnet18(pretrained=True)
-    model = model.to(device)
+    model_ft = torchvision.models.resnet18(pretrained=True)
+    for param in model_ft.parameters():
+        param.requires_grad = False
+    model_ft = model_ft.to(device)
+    num_ftrs = model_ft.fc.in_features
+    # Here the size of each output sample is set to 2.
+    # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
+    model_ft.fc = nn.Linear(num_ftrs, NUM_CLASSES)
     print('DEVICE: ', device)
-    return model
+    return model_ft
 
 
 def main():
