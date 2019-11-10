@@ -57,6 +57,7 @@ for param in model.parameters():
 model.fc = nn.Sequential(
     nn.Dropout(0.5),
     nn.Linear(2048, 128),
+    nn.BatchNorm1d(128),
     nn.ReLU(inplace=True),
     nn.Dropout(0.4),
     nn.Linear(128, 101)
