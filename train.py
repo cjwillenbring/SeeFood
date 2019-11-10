@@ -126,9 +126,7 @@ def load_model():
 
     model_ft.fc = torch.nn.Sequential(
         torch.nn.Dropout(DROPOUT[0]),
-        torch.nn.Linear(num_features, LINEAR_SIZE),
-        torch.nn.Dropout(DROPOUT[1]),
-        torch.nn.Linear(LINEAR_SIZE, NUM_CLASSES)
+        torch.nn.Linear(num_features, NUM_CLASSES)
     )
     model_ft = model_ft.to(device)
     print('DEVICE: ', device)
