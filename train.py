@@ -44,9 +44,12 @@ def load_datasets():
     return dataloaders, dataset_sizes, class_names
 
 
-def calculate_accuracy(predictions, labels):
-    print(predictions.shape)
-    return (predictions == labels.data).sum().float() / predictions.size(0)
+def num_correct(predictions, labels):
+    return (predictions == labels.data).sum().float()
+
+
+def calculate_loss(loss, m):
+    return loss.item() * m
 
 
 def convert_device(batch):
@@ -66,8 +69,8 @@ def train(model, criterion, optimizer, scheduler, loader, size):
         loss.backward()
         _, preds = torch.max(outputs, 1)
         # number of examples in batch, but why>
-        epoch_loss += loss.item()
-        epoch_accuracy += calculate_accuracy(preds, labels)
+        epoch_loss += loss.item() * size
+        epoch_accuracy += num_correct(preds, labels)
         optimizer.step()
     scheduler.step()
     return epoch_loss / size, epoch_accuracy / size
@@ -83,8 +86,8 @@ def evaluate(model, criterion, loader, size):
             outputs = model(inputs)
             loss = criterion(outputs, labels)
             _, preds = torch.max(outputs, 1)
-            epoch_loss += loss.item()
-            epoch_accuracy += calculate_accuracy(preds, labels)
+            epoch_loss += loss.item() * size
+            epoch_accuracy += num_correct(preds, labels)
     return epoch_loss / size, epoch_accuracy / size
 
 
