@@ -35,11 +35,11 @@ dataloaders = {
     'train': torch.utils.data.DataLoader(image_datasets['train'],
                                 batch_size=512,
                                 shuffle=True,
-                                num_workers=8),  # for Kaggle
+                                num_workers=8, pin_memory=True),  # for Kaggle
     'val': torch.utils.data.DataLoader(image_datasets['val'],
                                 batch_size=512,
                                 shuffle=False,
-                                num_workers=8)  # for Kaggle
+                                num_workers=8, pin_memory=True)  # for Kaggle
 }
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
