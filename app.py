@@ -1,4 +1,4 @@
-from train import eval_transform
+from train import evaluation_transform
 import os
 from torch import nn
 import torch
@@ -43,7 +43,7 @@ def mock_response():
 
 def predict_base64(b64):
     img = image_from_base64(b64)
-    x = eval_transform(img)
+    x = evaluation_transform(img)
     output = model(x)
     score, k = predict_one(output)
     return {'confidence': score, 'food': get_class_name(k)}

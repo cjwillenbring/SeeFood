@@ -1,67 +1,24 @@
-from torchvision import transforms, datasets, models
 import sys
-import os
+from datasets import loaders
+from model import load_model
 import torch
 from torch import nn, optim
 
+"""
+All of the models from torchvision expect the input to be 224 x 224 and mean normalized.
+"""
 
-normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                                 std=[0.229, 0.224, 0.225])
-
-
-eval_transform = transforms.Compose([transforms.Resize((224,224)), transforms.ToTensor(), normalize])
-
-
-data_transforms = {
-    'train':
-    transforms.Compose([
-        transforms.Resize((224,224)),
-        transforms.RandomAffine(0, shear=10, scale=(0.8,1.2)),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-        normalize
-    ]),
-    'val': eval_transform
-}
-
-image_datasets = {
-    'train':
-    datasets.ImageFolder(os.path.join(sys.argv[1], 'train'), data_transforms['train']),
-    'val':
-    datasets.ImageFolder(os.path.join(sys.argv[1], 'val'), data_transforms['val'])
-}
-
-dataloaders = {
-    'train': torch.utils.data.DataLoader(image_datasets['train'],
-                                batch_size=512,
-                                shuffle=True,
-                                num_workers=8, pin_memory=True),  # for Kaggle
-    'val': torch.utils.data.DataLoader(image_datasets['val'],
-                                batch_size=512,
-                                shuffle=False,
-                                num_workers=8, pin_memory=True)  # for Kaggle
-}
+# this normalizes the inputs based on the stddev and mean for ImageNet
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print("device: ", device)
 
-model = models.resnet18(pretrained=False).to(device)
-# train on more data. out. regularization? sure.
-
-model.fc = nn.Sequential(
-    nn.BatchNorm1d(512),
-    nn.Linear(512, 256),
-    nn.LeakyReLU(),
-    nn.Linear(256, 101)
-).to(device)
-
-
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.parameters(), weight_decay=1e-5, lr=0.001)
-
 
 def train_model(network, c, op, num_epochs=3):
+    train_loader, val_loader, train_set, val_set = loaders(sys.argv[1])
+    image_datasets = {'val': val_set, 'train': train_set}
+    dataloaders = {'val': val_loader, 'train': train_loader}
     best_acc = 0.0
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
@@ -103,6 +60,8 @@ def train_model(network, c, op, num_epochs=3):
     return network
 
 
-model = train_model(model, criterion, optimizer, 500)
-
-torch.save(model.state_dict(), 'model.pt')
+if __name__ == '__main__':
+    model = load_model().half()
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.045)
+    model = train_model(model, criterion, optimizer, 1000)

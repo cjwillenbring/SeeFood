@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/.idea/InceptionResNetV2.iml" filepath="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/.idea/InceptionResNetV2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SeeFood.iml" filepath="$PROJECT_DIR$/.idea/SeeFood.iml" />
     </modules>
   </component>
