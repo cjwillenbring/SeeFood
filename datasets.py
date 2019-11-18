@@ -5,18 +5,22 @@ import os
 
 mean_normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
+to_half = transforms.Lambda(lambda tensor: tensor.half())
+
 # need to resize the image to get the right dims, then transform to tensor and normalize
 evaluation_transform = transforms.Compose([
     transforms.Resize((299, 299)),
     transforms.ToTensor(),
-    mean_normalize
+    mean_normalize,
+    to_half
 ])
 
 train_transform = transforms.Compose([
     transforms.Resize((299, 299)),
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
-    mean_normalize
+    mean_normalize,
+    to_half
 ])
 
 
