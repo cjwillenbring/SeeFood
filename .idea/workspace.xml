@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce838cac-0ee4-4545-8fa9-9109c4f7b286" name="Default Changelist" comment="">
-      <change beforePath="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2.egg-info/PKG-INFO" beforeDir="false" afterPath="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/convolution_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/convolution_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,51 +24,27 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/inception_resnet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/concurrent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/setup.py">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/functions.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
               <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding>
                 <element signature="e#161#204#0" expanded="true" />
@@ -68,44 +54,52 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/load.py">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+            <state relative-caret-position="240">
+              <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#764#1150#0" />
+                <element signature="e#56#76#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model.py">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+            <state relative-caret-position="285">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="63" column="31" lean-forward="true" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="50" column="63" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="63" />
+            <state relative-caret-position="559">
+              <caret line="50" column="93" selection-start-line="50" selection-start-column="93" selection-end-line="50" selection-end-column="93" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -113,11 +107,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hyperparameters.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="16" selection-start-column="16" selection-end-column="16" />
+            <state relative-caret-position="210">
+              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/repeated.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -138,6 +141,7 @@
       <find>'valid'</find>
       <find>224</find>
       <find>'same'</find>
+      <find>Convolution</find>
     </findStrings>
     <replaceStrings>
       <replace>torch_inception_resnet_v2</replace>
@@ -145,8 +149,8 @@
       <replace>299</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks</dir>
-      <dir>$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2</dir>
+      <dir>$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks</dir>
+      <dir>$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -155,27 +159,27 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/__init__.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/__init__.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/repeated.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/stem/stem.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/convolution_config.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/__init__.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/functions.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/concurrent.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py" />
-        <option value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/setup.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/__init__.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/__init__.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/repeated.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/stem/stem.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/__init__.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/functions.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/concurrent.py" />
         <option value="$PROJECT_DIR$/load.py" />
         <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/train.py" />
-        <option value="$PROJECT_DIR$/datasets.py" />
         <option value="$PROJECT_DIR$/hyperparameters.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/convolution_config.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py" />
+        <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/setup.py" />
+        <option value="$PROJECT_DIR$/datasets.py" />
       </list>
     </option>
   </component>
@@ -190,7 +194,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -204,18 +207,24 @@
             </path>
             <path>
               <item name="SeeFood" type="b2602c69:ProjectViewProjectNode" />
+              <item name="torchinceptionresnetv2" type="462c0819:PsiDirectoryNode" />
+              <item name="torch_inception_resnet_v2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SeeFood" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -228,10 +237,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2" />
+      <recent name="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2" />
+      <recent name="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -261,18 +270,19 @@
       <workItem from="1573784244155" duration="316000" />
       <workItem from="1573784574387" duration="3405000" />
       <workItem from="1574005501589" duration="7766000" />
-      <workItem from="1574082822327" duration="3877000" />
+      <workItem from="1574082822327" duration="4030000" />
+      <workItem from="1574122538737" duration="1180000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18530000" />
+    <option name="totallyTimeSpent" value="19863000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26495728" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26800978" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -302,10 +312,10 @@
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -314,10 +324,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/hparams/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/hparams/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="40" selection-start-column="40" selection-end-column="40" />
@@ -344,62 +354,17 @@
     <entry file="file://$PROJECT_DIR$/experiment_log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/stem/stem.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/stem/stem.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
           <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/convolution_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="60" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/repeated.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -410,28 +375,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
-          <folding>
-            <element signature="e#56#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/README.md">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -442,17 +390,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/inception_resnet.py">
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/inception_resnet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
@@ -462,37 +400,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py">
+    <entry file="file://$PROJECT_DIR$/load.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/concurrent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/torchinceptionresnetv2/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        <state relative-caret-position="570">
+          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <folding>
-            <element signature="e#161#204#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/load.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        <state relative-caret-position="240">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#764#1150#0" />
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -500,27 +423,7 @@
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
-          <caret line="63" column="31" lean-forward="true" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="63" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -528,6 +431,112 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/concurrent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/convolution_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/repeated.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+          <folding>
+            <element signature="e#56#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/b.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="e#161#204#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="50" column="93" selection-start-line="50" selection-start-column="93" selection-end-line="50" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

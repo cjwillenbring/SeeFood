@@ -47,6 +47,6 @@ def loaders(root):
     :return: the loaders for each data set
     """
     train_set, val_set = load_data_sets(root)
-    train_loader = data.DataLoader(train_set, batch_size=BATCH_SIZE, shuffle=True, num_workers=8, pin_memory=True)
-    val_loader = data.DataLoader(val_set, batch_size=BATCH_SIZE, num_workers=8, pin_memory=True)
+    train_loader = data.DataLoader(train_set, batch_size=BATCH_SIZE, num_workers=8)
+    val_loader = data.DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=8)
     return train_loader, val_loader, train_set, val_set
