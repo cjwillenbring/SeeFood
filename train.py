@@ -36,21 +36,22 @@ def train_model(network, c, op, num_epochs=3):
             for inputs, labels in dataloaders[phase]:
                 inputs = inputs.to(device)
                 labels = labels.to(device)
+                op.zero_grad()
 
                 outputs = network(inputs)
                 loss = c(outputs, labels)
 
                 if phase == 'train':
-                    op.zero_grad()
                     loss.backward()
                     op.step()
 
                 _, preds = torch.max(outputs, 1)
-                running_loss += loss.item() * inputs.size(0)
-                running_corrects += torch.sum(preds == labels.data)
+                running_loss += float(loss) * float(inputs.size(0))
+                # this totally may have been it. If it were batch size it would have failed at any one point in time.
+                running_corrects += torch.sum(preds == labels.data).item()
 
             epoch_loss = running_loss / len(image_datasets[phase])
-            epoch_acc = running_corrects.double() / len(image_datasets[phase])
+            epoch_acc = running_corrects / len(image_datasets[phase])
             if epoch_acc > best_acc and phase == 'val':
                 torch.save(model.state_dict(), 'model.pt')
 
