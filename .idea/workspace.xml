@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce838cac-0ee4-4545-8fa9-9109c4f7b286" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,10 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
+            <state relative-caret-position="365">
               <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -24,11 +26,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/datasets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="50" column="110" selection-start-line="50" selection-start-column="110" selection-end-line="50" selection-end-column="110" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hyperparameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state>
+              <caret column="16" selection-start-column="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -85,18 +99,6 @@
               <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/stem/stem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-              <folding>
-                <element signature="e#40#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -175,7 +177,6 @@
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/b.py" />
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/inception/c.py" />
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/model.py" />
-        <option value="$PROJECT_DIR$/datasets.py" />
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/stem/stem.py" />
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/utils/branch.py" />
         <option value="$PROJECT_DIR$/srv_start.sh" />
@@ -184,8 +185,9 @@
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/reduction_block.py" />
         <option value="$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/setup.py" />
         <option value="$PROJECT_DIR$/profile.py" />
-        <option value="$PROJECT_DIR$/hyperparameters.py" />
         <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/hyperparameters.py" />
+        <option value="$PROJECT_DIR$/datasets.py" />
       </list>
     </option>
   </component>
@@ -279,12 +281,12 @@
       <workItem from="1574122538737" duration="1321000" />
       <workItem from="1574346543818" duration="1010000" />
       <workItem from="1574463060169" duration="362000" />
-      <workItem from="1574552886421" duration="4575000" />
+      <workItem from="1574552886421" duration="4708000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25951000" />
+    <option name="totallyTimeSpent" value="26084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -460,16 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../PycharmProjects/torchinceptionresnetv2/torch_inception_resnet_v2/blocks/reduction/reduction_block.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -576,19 +568,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="365">
           <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="50" column="110" selection-start-line="50" selection-start-column="110" selection-end-line="50" selection-end-column="110" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
