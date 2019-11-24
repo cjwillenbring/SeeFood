@@ -81,5 +81,5 @@ def train_model(network, c, op, num_epochs=3):
 if __name__ == '__main__':
     model = load_model().half()
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.0005)
     model = train_model(model, criterion, optimizer, 1000)
