@@ -3,7 +3,6 @@ from datasets import loaders
 from model import load_model
 import torch
 from torch import nn, optim
-from profile import profile
 
 """
 All of the models from torchvision expect the input to be 224 x 224 and mean normalized.
