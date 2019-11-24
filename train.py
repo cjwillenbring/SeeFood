@@ -42,7 +42,6 @@ def evaluate(network, c, loader, dataset):
     network.eval()
     running_corrects = 0
     running_loss = 0
-    print(len(dataset))
     with torch.no_grad():
         for inputs, labels in loader:
             inputs = inputs.to(device=device)
