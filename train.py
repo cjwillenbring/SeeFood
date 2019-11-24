@@ -11,6 +11,8 @@ All of the models from torchvision expect the input to be 224 x 224 and mean nor
 
 # this normalizes the inputs based on the stddev and mean for ImageNet
 
+torch.random_seed = 1
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print("device: ", device)
@@ -28,7 +30,6 @@ def train(network, c, op, loader, dataset):
         outputs = network(inputs)
         loss = c(outputs, labels.data)
         loss.backward()
-        print(loss.item())
         op.step()
         _, preds = torch.max(outputs, 1)
         running_loss += loss.item() * float(inputs.size(0))
@@ -79,5 +80,5 @@ def train_model(network, c, op, num_epochs=3):
 if __name__ == '__main__':
     model = load_model()
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
     model = train_model(model, criterion, optimizer, 1000)
