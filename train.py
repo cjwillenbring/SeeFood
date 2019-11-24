@@ -3,6 +3,7 @@ from datasets import loaders
 from model import load_model
 import torch
 from torch import nn, optim
+from profile import profile
 
 """
 All of the models from torchvision expect the input to be 224 x 224 and mean normalized.
@@ -34,11 +35,12 @@ def train_model(network, c, op, num_epochs=3):
             running_corrects = 0
 
             for inputs, labels in dataloaders[phase]:
-                inputs = inputs.to(device)
-                labels = labels.to(device)
                 op.zero_grad()
+                inputs = inputs.to(device)
 
                 outputs = network(inputs)
+                input_size = inputs.size(0)
+                labels = labels.to(device)
                 loss = c(outputs, labels)
 
                 if phase == 'train':
@@ -46,12 +48,13 @@ def train_model(network, c, op, num_epochs=3):
                     op.step()
 
                 _, preds = torch.max(outputs, 1)
-                running_loss += float(loss) * float(inputs.size(0))
+                running_loss += float(loss) * float(input_size)
                 # this totally may have been it. If it were batch size it would have failed at any one point in time.
                 running_corrects += torch.sum(preds == labels.data).item()
 
             epoch_loss = running_loss / len(image_datasets[phase])
             epoch_acc = running_corrects / len(image_datasets[phase])
+            profile()
             if epoch_acc > best_acc and phase == 'val':
                 torch.save(model.state_dict(), 'model.pt')
 
