@@ -20,20 +20,16 @@ def train(network, c, op, loader, dataset):
     network.train()
     running_corrects = 0
     running_loss = 0
-    print(len(dataset))
+    # average all inputs
     for inputs, labels in loader:
         op.zero_grad()
         inputs = inputs.to(device=device, dtype=torch.half)
         labels = labels.to(device=device, dtype=torch.long)
         outputs = network(inputs)
-        print(outputs.shape)
-        print(labels.shape)
         loss = c(outputs, labels.data)
         loss.backward()
         op.step()
         _, preds = torch.max(outputs, 1)
-        print(loss.item())
-        print(inputs.size(0))
         running_loss += loss.item() * float(inputs.size(0))
         # this totally may have been it. If it were batch size it would have failed at any one point in time.
         running_corrects += torch.sum(preds == labels.data).item()
@@ -82,5 +78,5 @@ def train_model(network, c, op, num_epochs=3):
 if __name__ == '__main__':
     model = load_model().half()
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.0005)
+    optimizer = optim.Adam(model.parameters(), lr=0.0001)
     model = train_model(model, criterion, optimizer, 1000)
