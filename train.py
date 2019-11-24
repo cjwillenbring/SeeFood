@@ -20,7 +20,10 @@ def train(network, c, op, loader, dataset):
     network.train()
     running_corrects = 0
     running_loss = 0
+    i = 0
     for inputs, labels in loader:
+        i += 1
+        print(i)
         op.zero_grad()
         inputs = inputs.to(device=device, dtype=torch.half)
         labels = labels.to(device=device, dtype=torch.half)
