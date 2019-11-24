@@ -5,22 +5,18 @@ import os
 
 mean_normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
-to_half = transforms.Lambda(lambda tensor: tensor.half())
-
 # need to resize the image to get the right dims, then transform to tensor and normalize
 evaluation_transform = transforms.Compose([
     transforms.Resize((299, 299)),
     transforms.ToTensor(),
-    mean_normalize,
-    to_half
+    mean_normalize
 ])
 
 train_transform = transforms.Compose([
     transforms.Resize((299, 299)),
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
-    mean_normalize,
-    to_half
+    mean_normalize
 ])
 
 
@@ -47,6 +43,6 @@ def loaders(root):
     :return: the loaders for each data set
     """
     train_set, val_set = load_data_sets(root)
-    train_loader = data.DataLoader(train_set, batch_size=BATCH_SIZE, num_workers=8, pin_memory=True)
-    val_loader = data.DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=8, pin_memory=True)
+    train_loader = data.DataLoader(train_set, batch_size=BATCH_SIZE, num_workers=8)
+    val_loader = data.DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=8)
     return train_loader, val_loader, train_set, val_set

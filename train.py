@@ -22,8 +22,8 @@ def train(network, c, op, loader, dataset):
     running_loss = 0
     for inputs, labels in loader:
         op.zero_grad()
-        inputs = inputs.to(device)
-        labels = labels.to(device)
+        inputs = inputs.to(device=device, dtype=torch.half)
+        labels = labels.to(device=device, dtype=torch.half)
         outputs = network(inputs)
         loss = c(outputs, labels)
         loss.backward()
@@ -41,8 +41,8 @@ def evaluate(network, c, loader, dataset):
     running_loss = 0
     with torch.no_grad():
         for inputs, labels in loader:
-            inputs = inputs.to(device)
-            labels = labels.to(device)
+            inputs = inputs.to(device=device, dtype=torch.half)
+            labels = labels.to(device=device, dtype=torch.half)
             outputs = network(inputs)
             loss = c(outputs, labels)
             _, preds = torch.max(outputs, 1)
