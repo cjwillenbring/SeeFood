@@ -30,6 +30,8 @@ def train(network, c, op, loader, dataset):
         loss.backward()
         op.step()
         _, preds = torch.max(outputs, 1)
+        print(loss.item())
+        print(inputs.size(0))
         running_loss += loss.item() * float(inputs.size(0))
         print(running_loss)
         # this totally may have been it. If it were batch size it would have failed at any one point in time.
