@@ -23,7 +23,7 @@ def train(network, c, op, loader, dataset):
     # average all inputs
     for inputs, labels in loader:
         op.zero_grad()
-        inputs = inputs.to(device=device, dtype=torch.half)
+        inputs = inputs.to(device=device)
         labels = labels.to(device=device, dtype=torch.long)
         outputs = network(inputs)
         loss = c(outputs, labels.data)
@@ -44,7 +44,7 @@ def evaluate(network, c, loader, dataset):
     print(len(dataset))
     with torch.no_grad():
         for inputs, labels in loader:
-            inputs = inputs.to(device=device, dtype=torch.half)
+            inputs = inputs.to(device=device)
             labels = labels.to(device=device, dtype=torch.long)
             outputs = network(inputs)
             loss = c(outputs, labels)
@@ -77,7 +77,7 @@ def train_model(network, c, op, num_epochs=3):
 
 
 if __name__ == '__main__':
-    model = load_model().half()
+    model = load_model()
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.0001)
     model = train_model(model, criterion, optimizer, 1000)
