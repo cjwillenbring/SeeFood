@@ -44,7 +44,7 @@ def evaluate(network, c, loader, dataset):
             inputs = inputs.to(device)
             labels = labels.to(device)
             outputs = network(inputs)
-            loss = c(outputs)
+            loss = c(outputs, labels)
             _, preds = torch.max(outputs, 1)
             running_loss += loss.item() * inputs.size(0)
             running_corrects += torch.sum(preds == labels.data).item()
@@ -54,14 +54,18 @@ def evaluate(network, c, loader, dataset):
 def train_model(network, c, op, num_epochs=3):
     train_loader, val_loader, train_set, val_set = loaders(sys.argv[1])
     best_acc = 0.0
+    train_accs = []
+    val_accs = []
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
         print('-' * 10)
 
         profile()
         train_acc, train_loss = train(network, c, op, train_loader, train_set)
+        train_accs += train_acc
         profile()
         val_acc, val_loss = evaluate(network, c, train_loader, train_set)
+        val_accs += val_acc
         profile()
         if val_acc > best_acc:
             torch.save(model.state_dict(), 'model.pt')
