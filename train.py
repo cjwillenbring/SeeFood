@@ -20,10 +20,7 @@ def train(network, c, op, loader, dataset):
     network.train()
     running_corrects = 0
     running_loss = 0
-    i = 0
     for inputs, labels in loader:
-        i += 1
-        print(i)
         op.zero_grad()
         inputs = inputs.to(device=device, dtype=torch.half)
         labels = labels.to(device=device, dtype=torch.long)
@@ -64,9 +61,9 @@ def train_model(network, c, op, num_epochs=3):
         print('-' * 10)
         start = time.time()
         train_acc, train_loss = train(network, c, op, train_loader, train_set)
-        train_accs += train_acc
+        train_accs.append(train_acc)
         val_acc, val_loss = evaluate(network, c, train_loader, train_set)
-        val_accs += val_acc
+        val_accs.append(val_acc)
         if val_acc > best_acc:
             torch.save(model.state_dict(), 'model.pt')
             best_acc = val_acc
