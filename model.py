@@ -15,5 +15,5 @@ def load_model():
     """
     model = InceptionResNetV2(101)
     if torch.cuda.is_available():
-        return model
+        return model.cuda()
     return model
