@@ -52,6 +52,11 @@ def train_model(network, c, op, num_epochs=3):
                 # this totally may have been it. If it were batch size it would have failed at any one point in time.
                 running_corrects += torch.sum(preds == labels.data).item()
 
+                del inputs
+                del outputs
+                del labels
+                del loss
+
             epoch_loss = running_loss / len(image_datasets[phase])
             epoch_acc = running_corrects / len(image_datasets[phase])
             profile()
