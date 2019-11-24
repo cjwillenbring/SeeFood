@@ -20,6 +20,7 @@ def train(network, c, op, loader, dataset):
     network.train()
     running_corrects = 0
     running_loss = 0
+    print(len(dataset))
     for inputs, labels in loader:
         op.zero_grad()
         inputs = inputs.to(device=device, dtype=torch.half)
@@ -29,7 +30,8 @@ def train(network, c, op, loader, dataset):
         loss.backward()
         op.step()
         _, preds = torch.max(outputs, 1)
-        running_loss += float(loss) * float(inputs.size(0))
+        running_loss += loss.item() * float(inputs.size(0))
+        print(running_loss)
         # this totally may have been it. If it were batch size it would have failed at any one point in time.
         running_corrects += torch.sum(preds == labels.data).item()
     return running_corrects / len(dataset), running_loss / len(dataset)
@@ -39,6 +41,7 @@ def evaluate(network, c, loader, dataset):
     network.eval()
     running_corrects = 0
     running_loss = 0
+    print(len(dataset))
     with torch.no_grad():
         for inputs, labels in loader:
             inputs = inputs.to(device=device, dtype=torch.half)
