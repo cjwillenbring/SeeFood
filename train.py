@@ -3,6 +3,7 @@ from datasets import loaders
 from model import load_model
 import torch
 from torch import nn, optim
+import time
 
 """
 All of the models from torchvision expect the input to be 224 x 224 and mean normalized.
@@ -58,6 +59,7 @@ def train_model(network, c, op, num_epochs=3):
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
         print('-' * 10)
+        start = time.time()
         train_acc, train_loss = train(network, c, op, train_loader, train_set)
         train_accs += train_acc
         val_acc, val_loss = evaluate(network, c, train_loader, train_set)
@@ -67,6 +69,7 @@ def train_model(network, c, op, num_epochs=3):
             best_acc = val_acc
         print('Train: {:.4f}, acc: {:.4f}'.format(train_loss, train_acc))
         print('Val: {:.4f}, acc: {:.4f}'.format(val_loss, val_acc))
+        print('Epoch time: {}'.format(time.time() - start))
     return network
 
 
