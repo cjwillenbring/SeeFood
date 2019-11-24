@@ -28,6 +28,7 @@ def train(network, c, op, loader, dataset):
         outputs = network(inputs)
         loss = c(outputs, labels.data)
         loss.backward()
+        print(loss.item())
         op.step()
         _, preds = torch.max(outputs, 1)
         running_loss += loss.item() * float(inputs.size(0))
