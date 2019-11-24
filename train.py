@@ -59,14 +59,10 @@ def train_model(network, c, op, num_epochs=3):
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
         print('-' * 10)
-
-        profile()
         train_acc, train_loss = train(network, c, op, train_loader, train_set)
         train_accs += train_acc
-        profile()
         val_acc, val_loss = evaluate(network, c, train_loader, train_set)
         val_accs += val_acc
-        profile()
         if val_acc > best_acc:
             torch.save(model.state_dict(), 'model.pt')
             best_acc = val_acc
