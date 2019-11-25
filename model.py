@@ -14,6 +14,8 @@ def load_model():
     :return: a torch.nn.Module
     """
     model = resnet101(pretrained=True)
+    for param in model.parameters():
+        param.requires_grad = False
     model.fc = torch.nn.Sequential(
         torch.nn.Dropout(0.5),
         torch.nn.Linear(2048, 101)
