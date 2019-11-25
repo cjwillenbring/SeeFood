@@ -14,7 +14,6 @@ evaluation_transform = transforms.Compose([
 
 train_transform = transforms.Compose([
     transforms.Resize((299, 299)),
-    transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     mean_normalize
 ])
@@ -43,6 +42,6 @@ def loaders(root):
     :return: the loaders for each data set
     """
     train_set, val_set = load_data_sets(root)
-    train_loader = data.DataLoader(train_set, batch_size=BATCH_SIZE, num_workers=8, pin_memory=True)
-    val_loader = data.DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=8, pin_memory=True)
+    train_loader = data.DataLoader(train_set, batch_size=BATCH_SIZE, num_workers=16, pin_memory=True)
+    val_loader = data.DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=4, pin_memory=True)
     return train_loader, val_loader, train_set, val_set
