@@ -21,7 +21,7 @@ def load_model():
     Loads the model to be used for training / inference
     :return: a torch.nn.Module
     """
-    model = inception_v3(pretrained=True, aux_logits=False)
+    model = inception_v3(pretrained=False, aux_logits=False)
     for param in model.parameters():
         param.requires_grad = False
     model.fc = torch.nn.Sequential(
